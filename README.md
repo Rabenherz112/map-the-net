@@ -186,7 +186,7 @@ python3 test_new_logic.py example.com
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the GNU AGPL v3.0. See the [LICENSE](./LICENSE) file for details.
 
 ## Auto-Update Feature
 
