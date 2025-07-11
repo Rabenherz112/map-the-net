@@ -47,4 +47,5 @@ AUTO_UPDATE_CONFIG = {
     'only_on_release': os.getenv('AUTO_UPDATE_ONLY_ON_RELEASE', 'false').lower() in ('true', '1', 'yes'),  # Only update on new releases (default: false)
     'release_keywords': [k.strip() for k in os.getenv('AUTO_UPDATE_RELEASE_KEYWORDS', 'CW-PUSH,ALL-PUSH,PUSH').split(',') if k.strip()],  # Only update if release name contains one of these keywords (comma-separated, default: 'CW-PUSH,ALL-PUSH,PUSH')
     'auth_token': os.getenv('AUTO_UPDATE_AUTH_TOKEN', None),  # Auth token for private repos (optional)
+    'include_prereleases': os.getenv('AUTO_UPDATE_INCLUDE_PRERELEASES', 'false').lower() in ('true', '1', 'yes'),  # Include pre-releases in update checks (default: false)
 }

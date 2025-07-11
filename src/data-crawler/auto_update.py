@@ -128,15 +128,32 @@ class AutoUpdate:
             self.logger.warning("Release update only supported for GitHub repos.")
             return
         repo_path = repo_url.split('github.com/')[-1].replace('.git', '')
-        api_url = f'https://api.github.com/repos/{repo_path}/releases/latest'
         headers = {}
         if self.config.get('auth_token'):
             headers['Authorization'] = f"token {self.config['auth_token']}"
-        resp = requests.get(api_url, headers=headers, timeout=10)
-        if resp.status_code != 200:
-            self.logger.warning(f"Failed to fetch releases: {resp.status_code}")
-            return
-        release = resp.json()
+        include_prereleases = self.config.get('include_prereleases', False)
+        if include_prereleases:
+            # Fetch all releases and pick the latest (including pre-releases)
+            api_url = f'https://api.github.com/repos/{repo_path}/releases'
+            resp = requests.get(api_url, headers=headers, timeout=10)
+            if resp.status_code != 200:
+                self.logger.warning(f"Failed to fetch releases: {resp.status_code}")
+                return
+            releases = resp.json()
+            if not releases:
+                self.logger.info("No releases found.")
+                return
+            # Pick the latest release (by published_at)
+            releases = sorted(releases, key=lambda r: r.get('published_at', ''), reverse=True)
+            release = releases[0]
+        else:
+            # Only use the latest stable release
+            api_url = f'https://api.github.com/repos/{repo_path}/releases/latest'
+            resp = requests.get(api_url, headers=headers, timeout=10)
+            if resp.status_code != 200:
+                self.logger.warning(f"Failed to fetch releases: {resp.status_code}")
+                return
+            release = resp.json()
         release_name = release.get('name', '')
         release_tag = release.get('tag_name', '')
         keywords = self.config.get('release_keywords', [])
@@ -144,8 +161,10 @@ class AutoUpdate:
             if not any(kw in release_name for kw in keywords):
                 self.logger.info(f"Latest release '{release_name}' does not match keywords {keywords}. Skipping update.")
                 return
-        # Compare version
-        if release_tag and release_tag != self.current_version:
+        # Compare version (normalize v prefix)
+        def _normalize_version(ver):
+            return ver.lstrip('vV') if ver else ''
+        if release_tag and _normalize_version(release_tag) != _normalize_version(self.current_version):
             self.logger.info(f"Update available via release: {release_tag}. Applying update...")
             assets = release.get('assets', [])
             asset_url = None
