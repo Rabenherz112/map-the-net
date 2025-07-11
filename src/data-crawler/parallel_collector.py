@@ -4,7 +4,9 @@ import logging
 import json
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from domain_collector import DomainCollector
-from config import COLLECTION_CONFIG
+from config import COLLECTION_CONFIG, AUTO_UPDATE_CONFIG
+from version import __version__
+from auto_update import AutoUpdate, default_restart_callback
 import os
 
 logging.basicConfig(level=logging.INFO)
@@ -138,6 +140,10 @@ def save_results_to_file(results, filename):
 
 def main():
     """Main function for parallel collection"""
+    # Start auto-update checker
+    auto_updater = AutoUpdate(AUTO_UPDATE_CONFIG, __version__, default_restart_callback)
+    auto_updater.start_periodic_check()
+
     # Example domains - you can load from file or define here
     domains = [
         'example.com',

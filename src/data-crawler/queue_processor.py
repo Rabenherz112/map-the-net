@@ -4,7 +4,9 @@ import argparse
 import signal
 import sys
 from domain_collector import DomainCollector
-from config import COLLECTION_CONFIG
+from config import COLLECTION_CONFIG, AUTO_UPDATE_CONFIG
+from version import __version__
+from auto_update import AutoUpdate, default_restart_callback
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -96,6 +98,10 @@ class QueueProcessor:
 
 def main():
     """Main function for queue processor"""
+    # Start auto-update checker
+    auto_updater = AutoUpdate(AUTO_UPDATE_CONFIG, __version__, default_restart_callback)
+    auto_updater.start_periodic_check()
+
     parser = argparse.ArgumentParser(description='Process domain discovery queue')
     parser.add_argument('--max-items', type=int, default=50, help='Maximum items to process per batch')
     parser.add_argument('--max-depth', type=int, default=COLLECTION_CONFIG['max_depth'], help='Maximum crawl depth')
