@@ -1,0 +1,42 @@
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=map_the_net
+DB_USER=your_username
+DB_PASSWORD=your_password
+
+# Collection Configuration
+COLLECTION_TIMEOUT=30
+COLLECTION_REQUEST_DELAY=1
+COLLECTION_MAX_LINKS_PER_PAGE=20
+COLLECTION_MAX_URLS_PER_DOMAIN=100
+COLLECTION_MAX_DEPTH=3
+COLLECTION_SKIP_ALREADY_PROCESSED=true
+COLLECTION_HTTP_USER_AGENT="WorldMapper/1.0 (+https://github.com/your-repo/map-the-net)"
+COLLECTION_INTERNAL_AGENT_NAME="your-machine-name-12345"
+COLLECTION_RESPECT_ROBOTS_TXT=true
+COLLECTION_PARALLEL_WORKERS=4
+
+# Data Collection Configuration
+DATA_COLLECT_WHOIS=true
+DATA_COLLECT_SSL=true
+DATA_COLLECT_GEOLOCATION=true
+DATA_COLLECT_SCREENSHOTS=false
+
+# Data Storage Configuration
+DATA_SCREENSHOT_DIR=./screenshots
+DATA_EXPORT_DIR=./exports 
+# Path to MaxMind GeoLite2 City database
+MAXMIND_DB_PATH=./GeoLite2-City.mmdb
+# Enable ipinfo.io fallback for IP geolocation (True/False)
+IPINFO_FALLBACK=true
+# ipinfo.io API token (optional, for higher rate limits)
+IPINFO_TOKEN=
+
+# Auto-Update Options
+# AUTO_UPDATE_ENABLED=true
+# AUTO_UPDATE_REPO_URL=https://github.com/Rabenherz112/map-the-net.git
+# AUTO_UPDATE_CHECK_INTERVAL=21600
+# AUTO_UPDATE_ONLY_ON_RELEASE=false
+# AUTO_UPDATE_RELEASE_KEYWORDS=CW-PUSH,ALL-PUSH,PUSH
+# AUTO_UPDATE_AUTH_TOKEN=your_github_token_here

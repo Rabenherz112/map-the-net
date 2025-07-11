@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapTheNetBot Information</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 32px 24px 40px 24px;
+        }
+        h1, h2, h3 {
+            color: #2a4d7a;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 2.5em;
+        }
+        h2 {
+            margin-top: 2em;
+            font-size: 1.5em;
+        }
+        code, pre {
+            background: #f3f3f3;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 1em;
+        }
+        pre {
+            padding: 12px;
+            overflow-x: auto;
+        }
+        .note {
+            background: #eaf6ff;
+            border-left: 4px solid #2a4d7a;
+            padding: 12px 18px;
+            margin: 24px 0;
+            border-radius: 6px;
+        }
+        .contact {
+            background: #f7f7f7;
+            border-radius: 6px;
+            padding: 18px;
+            margin-top: 32px;
+        }
+        ul {
+            margin-top: 0.5em;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 12px 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MapTheNetBot</h1>
+        <h2>Bot Information</h2>
+        <ul>
+            <li><strong>Bot Name:</strong> MapTheNetBot</li>
+            <li><strong>Version:</strong> 1.0</li>
+            <li><strong>Description:</strong> MapTheNetBot is an open-source research crawler designed to map the structure and relationships of websites across the internet. It collects metadata, relationships, and technical information to help researchers and the public better understand the web.</li>
+            <li><strong>Purpose:</strong> To build a comprehensive, open dataset of website relationships, metadata, and technical details for research, transparency, and educational purposes.</li>
+            <li><strong>GitHub Repository:</strong> <a href="https://github.com/Rabenherz112/map-the-net" target="_blank">https://github.com/Rabenherz112/map-the-net</a></li>
+            <li><strong>Respects robots.txt:</strong> MapTheNetBot fully adheres to the <a href="https://www.robotstxt.org/" target="_blank">robots.txt</a> protocol. It will not crawl or index pages disallowed in your site's <code>robots.txt</code> file.</li>
+        </ul>
+
+        <h2>What Information is Crawled?</h2>
+        <ul>
+            <li><strong>Domain metadata:</strong>
+                <ul>
+                    <li>Domain name, title, description, favicon URL</li>
+                    <li>SSL certificate validity and expiry</li>
+                    <li>WHOIS data (registrar, creation/expiry date)</li>
+                    <li>DNS and ASN information</li>
+                    <li>Geolocation (country, latitude, longitude)</li>
+                    <li>Category and tags (heuristically determined)</li>
+                </ul>
+            </li>
+            <li><strong>Relationships:</strong>
+                <ul>
+                    <li>Outbound and inbound links between domains</li>
+                    <li>Link text and context</li>
+                </ul>
+            </li>
+            <li><strong>Technical details:</strong>
+                <ul>
+                    <li>IP address, nameservers</li>
+                    <li>Screenshot (not yet implemented)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>What is Actually Stored?</h2>
+        <ul>
+            <li>Only the above metadata and relationship information is stored in the database.</li>
+            <li><strong>No page content, user data, or private information is stored.</strong></li>
+            <li>The crawler does not index or store any personal data, login pages, or user-generated content.</li>
+        </ul>
+
+        <h2>How Does the Bot Work?</h2>
+        <ol>
+            <li><strong>Seed domains</strong> are added to the queue.</li>
+            <li>For each domain:
+                <ul>
+                    <li>The bot checks robots.txt and skips disallowed paths.</li>
+                    <li>Fetches the homepage and collects metadata.</li>
+                    <li>Extracts and follows links to discover new domains.</li>
+                    <li>Collects technical and relationship data.</li>
+                    <li>Respects rate limits and politeness policies.</li>
+                </ul>
+            </li>
+            <li>The process repeats recursively, but always within ethical and technical boundaries.</li>
+        </ol>
+
+        <h2>How to Block MapTheNetBot (Please Don't!)</h2>
+        <div class="note">
+            If you wish to block MapTheNetBot, add the following to your <code>robots.txt</code> file:
+            <pre>User-agent: MapTheNetBot
+Disallow: /</pre>
+            <strong>Note:</strong> We kindly ask you not to block the bot, as our goal is research and transparency. If you have concerns, please contact us for custom solutions or opt-out options.
+        </div>
+
+        <div class="contact">
+            <h2>Contact and Support</h2>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:support@theravenhub.com">support@theravenhub.com</a></li>
+                <li><strong>GitHub Issues:</strong> <a href="https://github.com/Rabenherz112/map-the-net/issues" target="_blank">https://github.com/Rabenherz112/map-the-net/issues</a></li>
+                <li><strong>Website:</strong> <a href="https://theravenhub.com" target="_blank">https://theravenhub.com</a></li>
+            </ul>
+            <p>For any questions, opt-out requests, or support, please reach out via the above channels.</p>
+        </div>
+    </div>
+</body>
+</html> 

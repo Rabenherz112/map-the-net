@@ -1,0 +1,41 @@
+# Sample domains for data collection
+# One domain per line, lines starting with # are comments
+
+# Tech companies
+google.com
+microsoft.com
+apple.com
+amazon.com
+facebook.com
+twitter.com
+linkedin.com
+github.com
+stackoverflow.com
+reddit.com
+
+# News and media
+wikipedia.org
+bbc.com
+cnn.com
+nytimes.com
+reuters.com
+
+# E-commerce
+ebay.com
+etsy.com
+shopify.com
+walmart.com
+
+# Social media
+instagram.com
+youtube.com
+tiktok.com
+discord.com
+slack.com
+
+# Development and tools
+npmjs.com
+pypi.org
+docker.com
+kubernetes.io
+gitlab.com 

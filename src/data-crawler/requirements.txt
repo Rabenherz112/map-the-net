@@ -1,0 +1,14 @@
+requests==2.32.4
+beautifulsoup4==4.13.4
+dnspython==2.7.0
+whoisdomain==1.20250220.2
+mysql-connector-python==9.3.0
+python-dotenv==1.0.0
+tldextract==5.3.0
+urllib3==2.5.0
+lxml==6.0.0
+selenium==4.34.2
+webdriver-manager==4.0.2
+Pillow==11.3.0
+geopy==2.4.1
+geoip2==5.1.0
