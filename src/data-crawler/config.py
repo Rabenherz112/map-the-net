@@ -33,7 +33,8 @@ DATA_CONFIG = {
     'collect_ssl': os.getenv('COLLECT_SSL', 'True').lower() == 'true',
     'collect_geolocation': os.getenv('COLLECT_GEOLOCATION', 'True').lower() == 'true',
     'collect_screenshots': os.getenv('COLLECT_SCREENSHOTS', 'False').lower() == 'true',
-    'maxmind_db_path': os.getenv('MAXMIND_DB_PATH', './GeoLite2-City.mmdb'),
+    'maxmind_db_path': os.getenv('MAXMIND_DB_PATH', './resources/data-crawler/GeoLite2-City.mmdb'),
+    'screenshot_dir': os.getenv('SCREENSHOT_DIR', './resources/screenshots'),
     'ipinfo_fallback': os.getenv('IPINFO_FALLBACK', 'True').lower() == 'true',
     'ipinfo_token': os.getenv('IPINFO_TOKEN', None),
 }
